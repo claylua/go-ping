@@ -289,6 +289,7 @@ func (p *Pinger) run() {
 	c := make(chan os.Signal, 1)
 	signal.Notify(c, os.Interrupt)
 	signal.Notify(c, syscall.SIGTERM)
+  defer signal.Stop(c)
 
 	for {
 		select {
